@@ -9,7 +9,13 @@ class SnakeGame:
         Arrow keys: change direction
         q: quit the game
     """
-    def __init__(self, height: int = 20, width: int = 60) -> None:
+
+    def __init__(self, height: int = 20, width: int = 30) -> None:
+        """Initialize game with a rectangular board.
+
+        Each logical column is rendered as two characters so horizontal
+        movement covers the same physical distance as vertical movement.
+        """
         self.height = height
         self.width = width
         # Initialize snake in the middle of the screen
@@ -74,7 +80,12 @@ class SnakeGame:
             time.sleep(0.1)
 
         stdscr.nodelay(False)
-        stdscr.addstr(self.height // 2, self.width // 2 - 5, "Game Over")
+
+        stdscr.addstr(
+            self.height // 2,
+            self.width - len("Game Over") // 2,
+            "Game Over",
+        )
         stdscr.refresh()
         stdscr.getch()
 
@@ -82,13 +93,13 @@ class SnakeGame:
         """Draw borders, food, and snake."""
         for y in range(self.height):
             stdscr.addch(y, 0, "#")
-            stdscr.addch(y, self.width - 1, "#")
-        for x in range(self.width):
+            stdscr.addch(y, self.width * 2 - 1, "#")
+        for x in range(self.width * 2):
             stdscr.addch(0, x, "#")
             stdscr.addch(self.height - 1, x, "#")
-        stdscr.addch(self.food[0], self.food[1], "*")
+        stdscr.addstr(self.food[0], self.food[1] * 2, "**")
         for y, x in self.snake:
-            stdscr.addch(y, x, "O")
+            stdscr.addstr(y, x * 2, "OO")
 
 
 def main() -> None:
