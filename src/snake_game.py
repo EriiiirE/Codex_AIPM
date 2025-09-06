@@ -9,6 +9,7 @@ class SnakeGame:
         Arrow keys: change direction
         q: quit the game
     """
+
     def __init__(self, height: int = 20, width: int = 30) -> None:
         """Initialize game with a rectangular board.
 
@@ -79,6 +80,7 @@ class SnakeGame:
             time.sleep(0.1)
 
         stdscr.nodelay(False)
+
         stdscr.addstr(
             self.height // 2,
             self.width - len("Game Over") // 2,
