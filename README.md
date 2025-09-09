@@ -19,6 +19,18 @@ Use the arrow keys to move the snake and press `q` to quit.
 The game renders each column twice so horizontal and vertical movement
 appear at the same speed.
 
+## Kart Game Example
+`src/kart_game.py` provides a tiny terminal kart demo drawn with ANSI colors.
+Trees line the sides of the track and rocks appear as obstacles. Control the
+kart with `W`/`S` for acceleration and brake and `A`/`D` for turning.
+
+### Run the game
+```bash
+python src/kart_game.py
+```
+No external dependencies are required. In non-interactive environments run
+`python src/kart_game.py --test` to execute a short automated session.
+
 
 ### GitHub workflow overview
 1. **Clone the repository**: `git clone <repository-url>`
